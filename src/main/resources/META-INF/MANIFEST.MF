@@ -1,0 +1,6 @@
+Manifest-Version: 1.0
+Main-Class: com.example.memorygame.App
+Class-Path: javafx-base-19.0.2.jar javafx-fxml-19.0.2.jar javafx-graphic
+ s-19.0.2.jar javafx-fxml-19.0.2-win.jar javafx-controls-19.0.2.jar java
+ fx-controls-19.0.2-win.jar javafx-graphics-19.0.2-win.jar javafx-base-1
+ 9.0.2-win.jar
