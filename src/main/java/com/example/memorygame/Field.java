@@ -1,9 +1,11 @@
 package com.example.memorygame;
 
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
@@ -18,9 +20,15 @@ public class Field {
     }
 
     public static void main(String[] args) {
-        File file = new File("C:\\Users\\wwerc\\IdeaProjects\\LightsOut\\src\\main\\resources\\com\\example\\lightsout\\hint.png");
-        Image image = new Image(file.toURI().toString());
+
+        Image image = new Image(Field.class.getResource("/com/example/memorygame/nature/o5wafmm1.png").toExternalForm());
         ImageView imageView = new ImageView(image);
+
     }
+
+    public ImageView getImage() {
+        return image;
+    }
+
 
 }

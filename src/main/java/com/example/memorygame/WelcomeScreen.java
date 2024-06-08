@@ -5,9 +5,15 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class WelcomeScreen {
 
@@ -46,11 +52,11 @@ public class WelcomeScreen {
             Label emptyLabel2 = new Label();
             emptyLabel2.setVisible(false);
 
-            Button numbersButton = new Button("numbers");
-            numbersButton.getStyleClass().add("not-clicked-button");
-            numbersButton.setOnAction(event -> {
+            Button colorsButton = new Button("colors");
+            colorsButton.getStyleClass().add("not-clicked-button");
+            colorsButton.setOnAction(event -> {
                 emptyLabel2.setVisible(false);
-                changeColorAndSetCategory(numbersButton);
+                changeColorAndSetCategory(colorsButton);
             });
 
             Button animalsButton = new Button("animals");
@@ -65,6 +71,13 @@ public class WelcomeScreen {
             natureButton.setOnAction(event -> {
                 emptyLabel2.setVisible(false);
                 changeColorAndSetCategory(natureButton);
+            });
+
+            Button cartoonsButton = new Button("cartoons");
+            cartoonsButton.getStyleClass().add("not-clicked-button");
+            cartoonsButton.setOnAction(event -> {
+                emptyLabel2.setVisible(false);
+                changeColorAndSetCategory(cartoonsButton);
             });
 
             Button confirmButton = new Button("confirm");
@@ -83,8 +96,8 @@ public class WelcomeScreen {
                 }
             });
 
-            mainBox.getChildren().addAll(text, emptyLabel, numbersButton, animalsButton, natureButton, emptyLabel2, confirmButton);
-            Scene scene = new Scene(mainBox, 340, 400);
+            mainBox.getChildren().addAll(text, emptyLabel, colorsButton, animalsButton, natureButton, cartoonsButton, emptyLabel2, confirmButton);
+            Scene scene = new Scene(mainBox, 340, 430);
             stage.setScene(scene);
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
             stage.showAndWait();
@@ -178,6 +191,33 @@ public class WelcomeScreen {
         System.out.println(category);
         System.out.println(difficultyLevel);
 
+        DifficultyLevel difficultyLevel1 = DifficultyLevel.EASY;
+        if(difficultyLevel.equals("medium"))
+            difficultyLevel1 = DifficultyLevel.MEDIUM;
+        else if(difficultyLevel.equals("hard"))
+            difficultyLevel1 = DifficultyLevel.HARD;
+
+        Stage stage = new Stage();
+        VBox root = new VBox(10);
+
+        GameBoard gameBoard = new GameBoard(difficultyLevel1, category);
+        Field[][] map = gameBoard.getMap();
+
+        VBox box = new VBox(5);
+        for(int i = 0; i < map.length; i++){
+            HBox hbox = new HBox(5);
+            for(int j = 0; j < map[i].length; j++){
+                Field field = map[i][j];
+                hbox.getChildren().add(field.getImage());
+            }
+            box.getChildren().add(hbox);
+        }
+        root.getChildren().add(box);
+        Scene scene = new Scene(root, 400, 180);
+        stage.setTitle("Tic Tac Toe");
+        stage.setScene(scene);
+        stage.show();
+        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
     }
 
 }
