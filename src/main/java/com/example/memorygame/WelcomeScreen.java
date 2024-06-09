@@ -37,7 +37,7 @@ public class WelcomeScreen {
     private String category = null;
     private String difficultyLevel = null;
 
-    private void displayCategoryScreen(Stage mainStage) {
+    public void displayCategoryScreen(Stage mainStage) {
         Platform.runLater(() -> {
             Stage stage = new Stage();
             stage.initModality(Modality.APPLICATION_MODAL);
@@ -132,7 +132,6 @@ public class WelcomeScreen {
         System.out.println(text);
     }
 
-    //private String difficultyLevel = null;
     private void displayDifficultyScreen(Stage mainStage) {
         Platform.runLater(() -> {
             Stage stage = new Stage();

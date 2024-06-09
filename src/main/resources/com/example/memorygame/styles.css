@@ -20,6 +20,13 @@
     -fx-padding: 15px 22px;
     -fx-background-radius: 5px;
 }
+.button2{
+    -fx-background-color: #c798e5;
+    -fx-text-fill: black;
+    -fx-font-size: 13px;
+    -fx-padding: 15px 22px;
+    -fx-background-radius: 5px;
+}
 .not-clicked-button{
     -fx-background-color: #d8bee8;
     -fx-text-fill: black;
