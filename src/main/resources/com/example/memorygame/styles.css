@@ -5,6 +5,10 @@
     -fx-text-fill: white;
     -fx-font-size: 30px;
 }
+.normal-text{
+    -fx-text-fill: white;
+    -fx-font-size: 18px;
+}
 .error-text{
     -fx-text-fill: #f16e6e;
     -fx-font-size: 16px;

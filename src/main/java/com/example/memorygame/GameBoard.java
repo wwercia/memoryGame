@@ -20,21 +20,27 @@ public class GameBoard {
     private int numberOfImages;
     private int numberOfImagesInTotal;
     private String category;
+    private int numberOfPairsLeft;
+    private int numberOfPairsRevealed;
 
     public GameBoard(DifficultyLevel difficultyLevel, String category) {
         this.category = category;
+        this.numberOfPairsRevealed = 0;
         if (difficultyLevel.equals(DifficultyLevel.EASY)) {
             this.numberOfImages = 4;
+            this.numberOfPairsLeft = 4;
             this.numberOfImagesInTotal = 8;
             this.height = 2;
             this.width = 4;
         } else if (difficultyLevel.equals(DifficultyLevel.MEDIUM)) {
             this.numberOfImages = 8;
+            this.numberOfPairsLeft = 8;
             this.numberOfImagesInTotal = 16;
             this.height = 4;
             this.width = 4;
         } else if (difficultyLevel.equals(DifficultyLevel.HARD)) {
             this.numberOfImages = 12;
+            this.numberOfPairsLeft = 12;
             this.numberOfImagesInTotal = 24;
             this.height = 6;
             this.width = 4;
@@ -42,6 +48,14 @@ public class GameBoard {
         createNames();
         createFields();
         createMap();
+    }
+
+    public int getNumberOfPairsLeft() {
+        return numberOfPairsLeft;
+    }
+
+    public int getNumberOfPairsRevealed() {
+        return numberOfPairsRevealed;
     }
 
     public ArrayList<String> getImageNames() {
@@ -80,13 +94,14 @@ public class GameBoard {
             imageView2.setFitWidth(100);
             imageView2.setFitHeight(100);
             imageView2.setOnMouseClicked(event -> doSomething());
-            Field field = new Field(false, imageView);
-            Field field2 = new Field(false, imageView2);
+            Field field = new Field(false, image, imageView);
+            Field field2 = new Field(false, image, imageView2);
             fields.add(field);
             fields.add(field2);
         }
         System.out.println("after createFields");
     }
+
     private void doSomething() {
 
     }

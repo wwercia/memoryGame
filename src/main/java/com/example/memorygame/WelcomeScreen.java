@@ -80,6 +80,13 @@ public class WelcomeScreen {
                 changeColorAndSetCategory(cartoonsButton);
             });
 
+            Button sentencesButton = new Button("sentences");
+            sentencesButton.getStyleClass().add("not-clicked-button");
+            sentencesButton.setOnAction(event -> {
+                emptyLabel2.setVisible(false);
+                changeColorAndSetCategory(sentencesButton);
+            });
+
             Button confirmButton = new Button("confirm");
             confirmButton.getStyleClass().add("button");
             confirmButton.setOnAction(event -> {
@@ -96,8 +103,8 @@ public class WelcomeScreen {
                 }
             });
 
-            mainBox.getChildren().addAll(text, emptyLabel, colorsButton, animalsButton, natureButton, cartoonsButton, emptyLabel2, confirmButton);
-            Scene scene = new Scene(mainBox, 340, 430);
+            mainBox.getChildren().addAll(text, emptyLabel, colorsButton, animalsButton, natureButton, cartoonsButton, sentencesButton, emptyLabel2, confirmButton);
+            Scene scene = new Scene(mainBox, 340, 500);
             stage.setScene(scene);
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
             stage.showAndWait();
@@ -186,38 +193,18 @@ public class WelcomeScreen {
     }
 
     private void startGame() {
-        System.out.println();
-        System.out.println("Final data:");
-        System.out.println(category);
-        System.out.println(difficultyLevel);
+        DifficultyLevel difficultyLevel1 = getDifficultyLevel();
+        GameView gameView = new GameView(difficultyLevel1, category);
+        gameView.initView();
+    }
 
+    private DifficultyLevel getDifficultyLevel() {
         DifficultyLevel difficultyLevel1 = DifficultyLevel.EASY;
-        if(difficultyLevel.equals("medium"))
+        if (difficultyLevel.equals("medium"))
             difficultyLevel1 = DifficultyLevel.MEDIUM;
-        else if(difficultyLevel.equals("hard"))
+        else if (difficultyLevel.equals("hard"))
             difficultyLevel1 = DifficultyLevel.HARD;
-
-        Stage stage = new Stage();
-        VBox root = new VBox(10);
-
-        GameBoard gameBoard = new GameBoard(difficultyLevel1, category);
-        Field[][] map = gameBoard.getMap();
-
-        VBox box = new VBox(5);
-        for(int i = 0; i < map.length; i++){
-            HBox hbox = new HBox(5);
-            for(int j = 0; j < map[i].length; j++){
-                Field field = map[i][j];
-                hbox.getChildren().add(field.getImage());
-            }
-            box.getChildren().add(hbox);
-        }
-        root.getChildren().add(box);
-        Scene scene = new Scene(root, 400, 180);
-        stage.setTitle("Tic Tac Toe");
-        stage.setScene(scene);
-        stage.show();
-        scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
+        return difficultyLevel1;
     }
 
 }
