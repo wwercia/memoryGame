@@ -4,12 +4,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class Field {
-    private boolean isRevealed;
-    private Image image;
-    private ImageView imageView;
+    private final Image image;
+    private final ImageView imageView;
 
-    public Field(boolean isRevealed, Image image, ImageView imageView) {
-        this.isRevealed = isRevealed;
+    public Field(Image image, ImageView imageView) {
         this.image = image;
         this.imageView = imageView;
     }
@@ -17,11 +15,6 @@ public class Field {
     public ImageView getImageView() {
         return imageView;
     }
-
-    public boolean isRevealed() {
-        return isRevealed;
-    }
-
     public Image getImage() {
         return image;
     }

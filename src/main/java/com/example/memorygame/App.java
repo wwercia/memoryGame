@@ -3,12 +3,11 @@ package com.example.memorygame;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
-import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class App extends Application {
     @Override
-    public void start(Stage stage) throws Exception {
+    public void start(Stage stage){
         WelcomeScreen view = new WelcomeScreen();
         VBox root = view.initWelcomeView(stage);
         Scene scene = new Scene(root, 400, 180);

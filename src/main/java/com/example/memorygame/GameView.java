@@ -11,8 +11,8 @@ import javafx.stage.Stage;
 
 public class GameView {
 
-    private DifficultyLevel difficultyLevel;
-    private String category;
+    private final DifficultyLevel difficultyLevel;
+    private final String category;
 
     public GameView(DifficultyLevel difficultyLevel, String category) {
         this.difficultyLevel = difficultyLevel;
@@ -48,11 +48,10 @@ public class GameView {
 
             VBox box = new VBox(5);
             box.setAlignment(Pos.CENTER);
-            for (int i = 0; i < map.length; i++) {
+            for (Field[] fields : map) {
                 HBox hbox = new HBox(5);
                 hbox.setAlignment(Pos.CENTER);
-                for (int j = 0; j < map[i].length; j++) {
-                    Field field = map[i][j];
+                for (Field field : fields) {
                     hbox.getChildren().add(field.getImageView());
                 }
                 box.getChildren().add(hbox);
