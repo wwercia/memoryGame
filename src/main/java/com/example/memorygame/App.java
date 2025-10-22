@@ -11,7 +11,7 @@ public class App extends Application {
         WelcomeScreen view = new WelcomeScreen();
         VBox root = view.initWelcomeView(stage);
         Scene scene = new Scene(root, 400, 180);
-        stage.setTitle("Tic Tac Toe");
+        stage.setTitle("Memory");
         stage.setScene(scene);
         stage.show();
         scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());

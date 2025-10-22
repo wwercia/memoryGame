@@ -58,7 +58,7 @@ public class GameView {
             }
             root.getChildren().addAll(pairsToReveal, pairsRevealed, empty, box);
             Scene scene = new Scene(root, 450, getHeight());
-            stage.setTitle("Tic Tac Toe");
+            stage.setTitle("Memory");
             stage.setScene(scene);
             stage.show();
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
@@ -115,7 +115,7 @@ public class GameView {
 
             mainBox.getChildren().addAll(label, label2, playAgainButton, playAgainWithDifferentSettingsButton);
             Scene scene = new Scene(mainBox, 300, 250);
-            winningStage.setTitle("Tic Tac Toe");
+            winningStage.setTitle("Memory");
             winningStage.setScene(scene);
             winningStage.show();
             scene.getStylesheets().add(getClass().getResource("styles.css").toExternalForm());
